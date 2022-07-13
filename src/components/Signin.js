@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function App() {
@@ -18,12 +18,6 @@ function App() {
     setIsSubmit(true);
   };
 
-  useEffect(() => {
-    console.log(formErrors);
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(formValues);
-    }
-  }, [formErrors]);
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -50,18 +44,24 @@ function App() {
       ) : (
         <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
       )}
-      <img src="/IconsAndImg/shopping/goback.png" alt="goback" />
+      <img src="/IconsAndImg/shop/loginImg.png" alt="loginImg" />
+      <Link to="/">
+        <img src="/IconsAndImg/shopping/goback.png" alt="goback" />
+      </Link>
       <h1>Welcome Back</h1>
       <p>
         Yay! You're back! Thanks for shopping with us. We have excited deals and
-        promotions going on, grab your pick now!{" "}
+        promotions going on, grab your pick now!
       </p>
+      <Link to="/HomePage">
+        <img src="/IconsAndImg/shop/LOGO 1.png" alt="Logo" />
+      </Link>
       <form onSubmit={handleSubmit}>
-        <h1>Login Form</h1>
+        <h1>LOG IN</h1>
         <div className="ui divider"></div>
         <div className="ui form">
           <div className="field">
-            <label>Email</label>
+            <label>EMAIL</label>
             <input
               type="text"
               name="email"
@@ -72,7 +72,7 @@ function App() {
           </div>
           <p>{formErrors.email}</p>
           <div className="field">
-            <label>Password</label>
+            <label>PASSWORD</label>
             <input
               type="password"
               name="password"
@@ -83,7 +83,7 @@ function App() {
           </div>
           <p>{formErrors.password}</p>
           <Link to="/HomePage">
-            <button className="sign-button ">Signin</button>
+            <button className="sign-button ">LOG IN</button>
           </Link>
         </div>
       </form>
